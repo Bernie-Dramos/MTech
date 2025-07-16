@@ -1,32 +1,36 @@
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://moztech-solutions.vercel.app"
-
   return [
     {
-      url: baseUrl,
+      url: "https://makambatech.vercel.app",
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
+      url: "https://makambatech.vercel.app/about",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: "https://makambatech.vercel.app/services",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.8,
+    },
+    {
+      url: "https://makambatech.vercel.app/projects",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://makambatech.vercel.app/contact",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ]
 }

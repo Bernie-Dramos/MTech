@@ -1,26 +1,54 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import type React from "react"
+import { createContext, useContext, useState, useEffect, useCallback } from "react"
 import { translations } from "@/data/translations"
 
 type Language = "pt" | "en"
 
 interface LanguageContextType {
   language: Language
-  setLanguage: (lang: Language) => void
+  toggleLanguage: () => void
   t: (key: string) => string
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("pt")
 
-  const t = (key: string): string => {
-    return translations[language][key] || key
-  }
+  useEffect(() => {
+    // Attempt to load language from localStorage or detect browser preference
+    const storedLanguage = localStorage.getItem("language") as Language
+    if (storedLanguage && (storedLanguage === "pt" || storedLanguage === "en")) {
+      setLanguage(storedLanguage)
+    } else if (typeof navigator !== "undefined") {
+      const browserLanguage = navigator.language.split("-")[0]
+      if (browserLanguage === "en") {
+        setLanguage("en")
+      } else {
+        setLanguage("pt") // Default to Portuguese if not English
+      }
+    }
+  }, [])
 
-  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+  const toggleLanguage = useCallback(() => {
+    setLanguage((prevLang) => {
+      const newLang = prevLang === "pt" ? "en" : "pt"
+      localStorage.setItem("language", newLang)
+      return newLang
+    })
+  }, [])
+
+  const t = useCallback(
+    (key: string): string => {
+      const currentTranslations = translations[language]
+      return currentTranslations[key] || key // Fallback to key if translation not found
+    },
+    [language],
+  )
+
+  return <LanguageContext.Provider value={{ language, toggleLanguage, t }}>{children}</LanguageContext.Provider>
 }
 
 export function useLanguage() {

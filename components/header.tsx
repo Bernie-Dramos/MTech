@@ -1,100 +1,127 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import LanguageToggle from "./language-toggle"
+import { motion } from "framer-motion"
+import { useTheme } from "next-themes"
+import { Sun, Moon } from "lucide-react"
+import SeoOptimizedImage from "./seo-optimized-image"
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
   const { t } = useLanguage()
+  const [isSheetOpen, setIsSheetOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const navItems = [
-    { href: "/", label: t("home") },
-    { href: "/projects", label: t("projects") },
-    { href: "/services", label: t("services") },
-    { href: "/contact", label: t("contact") },
-  ]
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-slate-900/95 backdrop-blur-md border-b border-slate-800" : "bg-transparent"
-      }`}
+      className="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-700 text-white py-4"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold">
-              <span className="text-white">Moz</span>
-              <span className="text-cyan-400">Tech</span>
-            </div>
-            <span className="text-slate-300 text-sm hidden sm:block">Solutions</span>
+      <div className="container flex h-14 items-center justify-between px-4 md:px-6">
+        <Link className="flex items-center gap-2" href="/">
+          <SeoOptimizedImage
+            src="/placeholder-logo.png"
+            alt="MozTech Solutions Logo"
+            width={40}
+            height={40}
+            className="h-10 w-10"
+          />
+          <span className="text-xl font-bold text-cyan-400">MozTech Solutions</span>
+        </Link>
+        <nav className="hidden gap-6 md:flex">
+          <Link className="text-slate-300 hover:text-cyan-400 transition-colors" href="/">
+            {t("home")}
           </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-cyan-400 ${
-                  pathname === item.href ? "text-cyan-400" : "text-slate-300"
-                }`}
-              >
-                {item.label}
+          <Link className="text-slate-300 hover:text-cyan-400 transition-colors" href="/#about">
+            {t("about")}
+          </Link>
+          <Link className="text-slate-300 hover:text-cyan-400 transition-colors" href="/services">
+            {t("services")}
+          </Link>
+          <Link className="text-slate-300 hover:text-cyan-400 transition-colors" href="/projects">
+            {t("projects")}
+          </Link>
+          <Link className="text-slate-300 hover:text-cyan-400 transition-colors" href="/contact">
+            {t("contact")}
+          </Link>
+        </nav>
+        <div className="flex items-center gap-4">
+          <LanguageToggle />
+          <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === "dark" ? (
+              <Sun className="h-6 w-6 text-yellow-400" />
+            ) : (
+              <Moon className="h-6 w-6 text-blue-400" />
+            )}
+          </Button>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
+              <Button className="md:hidden" size="icon" variant="ghost">
+                <Menu className="h-6 w-6 text-white" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-slate-900 text-white border-l border-slate-700">
+              <Link className="flex items-center gap-2 py-4" href="/" onClick={() => setIsSheetOpen(false)}>
+                <SeoOptimizedImage
+                  src="/placeholder-logo.png"
+                  alt="MozTech Solutions Logo"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10"
+                />
+                <span className="text-xl font-bold text-cyan-400">MozTech Solutions</span>
               </Link>
-            ))}
-          </nav>
-
-          {/* Language Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <LanguageToggle />
-
-            {/* Mobile Menu Button */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="lg:hidden text-white hover:text-cyan-400">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="bg-slate-900 border-slate-800">
-                <div className="flex flex-col space-y-6 mt-8">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`text-lg font-medium transition-colors hover:text-cyan-400 ${
-                        pathname === item.href ? "text-cyan-400" : "text-slate-300"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+              <div className="grid gap-4 py-6">
+                <Link
+                  className="flex w-full items-center py-2 text-lg font-semibold text-slate-300 hover:text-cyan-400 transition-colors"
+                  href="/"
+                  onClick={() => setIsSheetOpen(false)}
+                >
+                  {t("home")}
+                </Link>
+                <Link
+                  className="flex w-full items-center py-2 text-lg font-semibold text-slate-300 hover:text-cyan-400 transition-colors"
+                  href="/#about"
+                  onClick={() => setIsSheetOpen(false)}
+                >
+                  {t("about")}
+                </Link>
+                <Link
+                  className="flex w-full items-center py-2 text-lg font-semibold text-slate-300 hover:text-cyan-400 transition-colors"
+                  href="/services"
+                  onClick={() => setIsSheetOpen(false)}
+                >
+                  {t("services")}
+                </Link>
+                <Link
+                  className="flex w-full items-center py-2 text-lg font-semibold text-slate-300 hover:text-cyan-400 transition-colors"
+                  href="/projects"
+                  onClick={() => setIsSheetOpen(false)}
+                >
+                  {t("projects")}
+                </Link>
+                <Link
+                  className="flex w-full items-center py-2 text-lg font-semibold text-slate-300 hover:text-cyan-400 transition-colors"
+                  href="/contact"
+                  onClick={() => setIsSheetOpen(false)}
+                >
+                  {t("contact")}
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </motion.header>

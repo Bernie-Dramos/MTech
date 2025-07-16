@@ -1,17 +1,33 @@
 "use client"
 
+import Script from "next/script"
 import { useLanguage } from "@/contexts/language-context"
 
-export default function StructuredData() {
+interface StructuredDataProps {
+  data: Record<string, any>
+}
+
+export default function StructuredData({ data }: StructuredDataProps) {
+  return (
+    <Script
+      id={`structured-data-${data["@type"]}`}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
+
+// Example usage of the updated component
+export function MakambaTechStructuredData() {
   const { language } = useLanguage()
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "MozTech Solutions",
-    alternateName: "MozTech",
-    url: "https://moztech-solutions.vercel.app",
-    logo: "https://moztech-solutions.vercel.app/logo.png",
+    name: "MakambaTech",
+    alternateName: "Makamba",
+    url: "https://makambatech.vercel.app",
+    logo: "https://makambatech.vercel.app/logo.png",
     description:
       language === "pt"
         ? "Empresa de tecnologia moçambicana dedicada a fortalecer a era digital através de desenvolvimento de software, formação tecnológica e transformação digital."
@@ -27,10 +43,10 @@ export default function StructuredData() {
       "@type": "ContactPoint",
       telephone: "+258-21-123-456",
       contactType: "customer service",
-      email: "info@moztech.co.mz",
+      email: "info@makambatech.co.mz",
       availableLanguage: ["Portuguese", "English"],
     },
-    sameAs: ["https://linkedin.com/company/moztech-solutions", "https://twitter.com/moztechsolutions"],
+    sameAs: ["https://linkedin.com/company/makambatech", "https://twitter.com/makambatech"],
     foundingDate: "2019",
     foundingLocation: {
       "@type": "Place",
@@ -62,12 +78,12 @@ export default function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "MozTech Solutions",
-    url: "https://moztech-solutions.vercel.app",
+    name: "MakambaTech",
+    url: "https://makambatech.vercel.app",
     description:
       language === "pt"
-        ? "Website oficial da MozTech Solutions - empresa líder em tecnologia em Moçambique"
-        : "Official website of MozTech Solutions - leading technology company in Mozambique",
+        ? "Website oficial da MakambaTech - empresa líder em tecnologia em Moçambique"
+        : "Official website of MakambaTech - leading technology company in Mozambique",
     inLanguage: [
       {
         "@type": "Language",
@@ -82,7 +98,7 @@ export default function StructuredData() {
     ],
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://moztech-solutions.vercel.app/search?q={search_term_string}",
+      target: "https://makambatech.vercel.app/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   }
@@ -90,11 +106,11 @@ export default function StructuredData() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://moztech-solutions.vercel.app/#organization",
-    name: "MozTech Solutions",
-    image: "https://moztech-solutions.vercel.app/logo.png",
+    "@id": "https://makambatech.vercel.app/#organization",
+    name: "MakambaTech",
+    image: "https://makambatech.vercel.app/logo.png",
     telephone: "+258-21-123-456",
-    email: "info@moztech.co.mz",
+    email: "info@makambatech.co.mz",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Avenida Julius Nyerere, 123",
@@ -128,9 +144,9 @@ export default function StructuredData() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <StructuredData data={organizationSchema} />
+      <StructuredData data={websiteSchema} />
+      <StructuredData data={localBusinessSchema} />
     </>
   )
 }

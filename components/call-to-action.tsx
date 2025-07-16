@@ -9,36 +9,35 @@ export default function CallToAction() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%2322d3ee' fillOpacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t("ctaTitle")}</h2>
-          <p className="text-xl text-slate-300 mb-8 leading-relaxed">{t("ctaDescription")}</p>
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="bg-cyan-500 hover:bg-cyan-600 text-white px-12 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
-            >
-              {t("contactUs")}
-            </Button>
-          </Link>
-        </motion.div>
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-cyan-400"
+          >
+            {t("heroCta")}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+          >
+            {t("contactDescription")}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link href="/contact" passHref>
+              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 text-lg">{t("contact")}</Button>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

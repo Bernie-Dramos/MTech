@@ -2,81 +2,93 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/contexts/language-context"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import LoadingAnimation from "@/components/loading-animation"
+import { Toaster } from "@/components/ui/sonner"
+import { ParticleBackground } from "@/components/particle-background"
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "MozTech Solutions - Impulsionando o Futuro Digital de Moçambique",
-    template: "%s | MozTech Solutions",
+    default: "MakambaTech - Soluções Tecnológicas Inovadoras em Moçambique",
+    template: "%s | MakambaTech",
   },
   description:
-    "Empresa de tecnologia moçambicana dedicada a fortalecer a era digital através de desenvolvimento de software, formação tecnológica e transformação digital. Capacitamos indivíduos e empresas em Moçambique.",
-  keywords: [
-    "tecnologia Moçambique",
-    "desenvolvimento software Maputo",
-    "formação tecnológica",
-    "transformação digital",
-    "consultoria TI Moçambique",
-    "programação Moçambique",
-    "MozTech Solutions",
-    "empresa tecnologia Maputo",
-  ],
-  authors: [{ name: "MozTech Solutions" }],
-  creator: "MozTech Solutions",
-  publisher: "MozTech Solutions",
-  robots: {
-    index: true,
-    follow: true,
+    "MakambaTech é uma empresa líder em tecnologia em Moçambique, oferecendo desenvolvimento de software, formação tecnológica, transformação digital e consultoria em TI. Impulsionando o futuro digital.",
+  metadataBase: new URL("https://makambatech.vercel.app"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "pt-MZ": "/",
+      "en-US": "/en",
+    },
   },
   openGraph: {
-    type: "website",
-    locale: "pt_MZ",
-    alternateLocale: ["en_US"],
-    siteName: "MozTech Solutions",
-    title: "MozTech Solutions - Impulsionando o Futuro Digital de Moçambique",
+    title: "MakambaTech - Inovação e Tecnologia em Moçambique",
     description:
-      "Empresa de tecnologia moçambicana dedicada a fortalecer a era digital através de desenvolvimento de software, formação tecnológica e transformação digital.",
+      "Parceiro tecnológico de confiança em Moçambique para desenvolvimento de software, formação e transformação digital.",
+    url: "https://makambatech.vercel.app",
+    siteName: "MakambaTech",
     images: [
       {
-        url: "/maputo-skyline.jpg",
+        url: "/og-image.jpg", // Default OG image
         width: 1200,
-        height: 800,
-        alt: "Maputo skyline at dusk - MozTech Solutions",
+        height: 630,
+        alt: "MakambaTech - Soluções Tecnológicas",
       },
     ],
+    locale: "pt_MZ",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MozTech Solutions - Impulsionando o Futuro Digital de Moçambique",
+    title: "MakambaTech - Soluções Tecnológicas Inovadoras em Moçambique",
     description:
-      "Empresa de tecnologia moçambicana dedicada a fortalecer a era digital através de desenvolvimento de software, formação tecnológica e transformação digital.",
-    images: ["/maputo-skyline.jpg"],
+      "MakambaTech é uma empresa líder em tecnologia em Moçambique, oferecendo desenvolvimento de software, formação tecnológica, transformação digital e consultoria em TI. Impulsionando o futuro digital.",
+    images: ["/twitter-image.jpg"], // Default Twitter image
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
     generator: 'v0.dev'
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="pt">
+    <html lang="pt" suppressHydrationWarning>
       <body className={inter.className}>
-        <LanguageProvider>
-          <LoadingAnimation />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </LanguageProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <LanguageProvider>
+            <ParticleBackground />
+            <div className="relative z-10 flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+            <Toaster />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

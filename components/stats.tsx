@@ -1,59 +1,64 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { statsData } from "@/data/mock-data"
 import { useLanguage } from "@/contexts/language-context"
-import { stats } from "@/data/mock-data"
-import { useEffect, useState } from "react"
-
-function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    let startTime: number
-    let animationFrame: number
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-
-      setCount(Math.floor(progress * end))
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate)
-      }
-    }
-
-    animationFrame = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrame)
-  }, [end, duration])
-
-  return <span>{count}</span>
-}
 
 export default function Stats() {
-  const { language } = useLanguage()
+  const { t } = useLanguage()
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  }
 
   return (
-    <section className="py-20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-cyan-400 mb-2">
-                <AnimatedCounter end={stat.number} />
-                {stat.number >= 100 && "+"}
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-cyan-400"
+          >
+            {t("statsTitle")}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+          >
+            {t("statsDescription")}
+          </motion.p>
+        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-4"
+        >
+          {statsData.map((stat) => (
+            <motion.div key={stat.id} variants={itemVariants} className="flex flex-col items-center space-y-2">
+              <div className="text-5xl font-bold text-cyan-400">
+                {stat.value}
+                {stat.suffix}
               </div>
-              <p className="text-slate-300 font-medium">{stat.label[language]}</p>
+              <div className="text-slate-200">{t(stat.label)}</div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

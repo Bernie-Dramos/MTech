@@ -1,57 +1,43 @@
-import type { Metadata } from "next"
 import Hero from "@/components/hero"
 import About from "@/components/about"
-import FeaturedProjects from "@/components/featured-projects"
 import ServicesTeaser from "@/components/services-teaser"
-import Stats from "@/components/stats"
+import FeaturedProjects from "@/components/featured-projects"
 import Testimonials from "@/components/testimonials"
+import Stats from "@/components/stats"
 import CallToAction from "@/components/call-to-action"
 import StructuredData from "@/components/structured-data"
 
-export const metadata: Metadata = {
-  title: "MozTech Solutions - Impulsionando o Futuro Digital de Moçambique",
-  description:
-    "Empresa líder em tecnologia em Moçambique. Oferecemos desenvolvimento de software, formação tecnológica, transformação digital e consultoria em TI. Capacitamos indivíduos e empresas para o futuro digital.",
-  keywords: [
-    "empresa tecnologia Moçambique",
-    "desenvolvimento software Maputo",
-    "formação programação",
-    "transformação digital empresas",
-    "consultoria TI Moçambique",
-    "MozTech Solutions",
-    "tecnologia Maputo",
-  ],
-  openGraph: {
-    title: "MozTech Solutions - Líder em Tecnologia em Moçambique",
-    description:
-      "Transformamos o futuro digital de Moçambique através de soluções tecnológicas inovadoras, formação especializada e consultoria estratégica.",
-    url: "https://moztech-solutions.vercel.app",
-    images: [
-      {
-        url: "/og-home.jpg",
-        width: 1200,
-        height: 630,
-        alt: "MozTech Solutions - Skyline de Maputo com tecnologia",
-      },
-    ],
-  },
-  alternates: {
-    canonical: "https://moztech-solutions.vercel.app",
-    languages: {
-      "pt-MZ": "https://moztech-solutions.vercel.app",
-      "en-US": "https://moztech-solutions.vercel.app/en",
-    },
-  },
-}
+export default function Home() {
+  // In a Server Component, you don't use hooks like useLanguage directly.
+  // Translations for static content should be passed down or fetched.
+  // For dynamic content, client components will handle their own translations.
 
-export default function HomePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "MozTech Solutions",
+    url: "https://moztechsolutions.com",
+    logo: "https://moztechsolutions.com/placeholder-logo.png",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+258841234567",
+      contactType: "customer service",
+      email: "info@moztechsolutions.com",
+    },
+    sameAs: [
+      "https://facebook.com/moztechsolutions",
+      "https://twitter.com/moztechsolutions",
+      "https://linkedin.com/company/moztechsolutions",
+    ],
+  }
+
   return (
     <>
-      <StructuredData />
+      <StructuredData data={structuredData} />
       <Hero />
       <About />
-      <FeaturedProjects />
       <ServicesTeaser />
+      <FeaturedProjects />
       <Stats />
       <Testimonials />
       <CallToAction />
