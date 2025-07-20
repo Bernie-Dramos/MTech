@@ -2,53 +2,57 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/contexts/language-context"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Toaster } from "@/components/ui/sonner"
-import { ParticleBackground } from "@/components/particle-background"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: {
-    default: "MakambaTech - Soluções Tecnológicas Inovadoras em Moçambique",
-    template: "%s | MakambaTech",
-  },
+  title: "MozTech Solutions - Leading Technology Company in Mozambique",
   description:
-    "MakambaTech é uma empresa líder em tecnologia em Moçambique, oferecendo desenvolvimento de software, formação tecnológica, transformação digital e consultoria em TI. Impulsionando o futuro digital.",
-  metadataBase: new URL("https://makambatech.vercel.app"),
+    "MozTech Solutions provides cutting-edge web development, mobile apps, AI solutions, and digital transformation services in Mozambique.",
+  keywords: "web development, mobile apps, AI solutions, digital transformation, Mozambique, technology",
+  authors: [{ name: "MozTech Solutions" }],
+  creator: "MozTech Solutions",
+  publisher: "MozTech Solutions",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://moztech-solutions.vercel.app"),
   alternates: {
     canonical: "/",
     languages: {
-      "pt-MZ": "/",
-      "en-US": "/en",
+      "en-US": "/en-US",
+      "pt-PT": "/pt-PT",
     },
   },
   openGraph: {
-    title: "MakambaTech - Inovação e Tecnologia em Moçambique",
+    title: "MozTech Solutions - Leading Technology Company in Mozambique",
     description:
-      "Parceiro tecnológico de confiança em Moçambique para desenvolvimento de software, formação e transformação digital.",
-    url: "https://makambatech.vercel.app",
-    siteName: "MakambaTech",
+      "MozTech Solutions provides cutting-edge web development, mobile apps, AI solutions, and digital transformation services in Mozambique.",
+    url: "https://moztech-solutions.vercel.app",
+    siteName: "MozTech Solutions",
     images: [
       {
-        url: "/og-image.jpg", // Default OG image
-        width: 1200,
-        height: 630,
-        alt: "MakambaTech - Soluções Tecnológicas",
+        url: "/placeholder-logo.png",
+        width: 800,
+        height: 600,
+        alt: "MozTech Solutions Logo",
       },
     ],
-    locale: "pt_MZ",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MakambaTech - Soluções Tecnológicas Inovadoras em Moçambique",
+    title: "MozTech Solutions - Leading Technology Company in Mozambique",
     description:
-      "MakambaTech é uma empresa líder em tecnologia em Moçambique, oferecendo desenvolvimento de software, formação tecnológica, transformação digital e consultoria em TI. Impulsionando o futuro digital.",
-    images: ["/twitter-image.jpg"], // Default Twitter image
+      "MozTech Solutions provides cutting-edge web development, mobile apps, AI solutions, and digital transformation services in Mozambique.",
+    images: ["/placeholder-logo.png"],
+    creator: "@moztechsolutions",
   },
   robots: {
     index: true,
@@ -61,31 +65,20 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
     generator: 'v0.dev'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="pt" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>
-            <ParticleBackground />
-            <div className="relative z-10 flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
+            {children}
             <Toaster />
           </LanguageProvider>
         </ThemeProvider>

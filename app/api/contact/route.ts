@@ -1,27 +1,32 @@
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const { name, email, message } = await request.json()
+    const body = await request.json()
+    const { name, email, message } = body
 
-    // Basic validation
+    // Validate required fields
     if (!name || !email || !message) {
-      return NextResponse.json({ message: "Missing required fields" }, { status: 400 })
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 })
     }
 
-    // In a real application, you would send this data to an email service
-    // or save it to a database. For this example, we'll just log it.
-    console.log("Contact form submission received:")
-    console.log(`Name: ${name}`)
-    console.log(`Email: ${email}`)
-    console.log(`Message: ${message}`)
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
+    }
 
-    // Simulate a delay for network request
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    // Here you would typically:
+    // 1. Save to database
+    // 2. Send email notification
+    // 3. Integrate with CRM
+
+    // For now, we'll just simulate a successful submission
+    console.log("Contact form submission:", { name, email, message })
 
     return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 })
   } catch (error) {
-    console.error("Error processing contact form submission:", error)
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 })
+    console.error("Contact form error:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }

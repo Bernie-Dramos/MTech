@@ -1,83 +1,59 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { projectsData } from "@/data/mock-data"
-import { useLanguage } from "@/contexts/language-context"
-import Link from "next/link"
-import SeoOptimizedImage from "./seo-optimized-image"
 
-export default function FeaturedProjects() {
-  const { t } = useLanguage()
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  }
-
+export function FeaturedProjects() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-cyan-400"
-          >
-            {t("projectsTeaserTitle")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-          >
-            {t("projectsTeaserDescription")}
-          </motion.p>
-        </div>
+    <section id="projects" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="mx-auto grid gap-6 py-12 lg:grid-cols-2 xl:grid-cols-2"
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          {projectsData.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <Card className="bg-slate-800 border-slate-700 text-white overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300">
-                <SeoOptimizedImage
-                  src={project.image}
-                  alt={t(project.name)}
-                  width={600}
-                  height={400}
-                  className="w-full h-60 object-cover"
-                />
-                <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-cyan-400">{t(project.name)}</CardTitle>
-                  <CardDescription className="text-slate-300">{t(project.description)}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link href={project.link} passHref>
-                    <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white">
-                      {t("viewProject")} {/* Assuming you'll add this translation key */}
-                    </Button>
-                  </Link>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover some of our recent work and the innovative solutions we've delivered for our clients.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <Badge key={techIndex} variant="secondary">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

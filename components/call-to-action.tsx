@@ -2,42 +2,47 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { ArrowRight, Mail } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
-import Link from "next/link"
 
-export default function CallToAction() {
+export function CallToAction() {
   const { t } = useLanguage()
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-cyan-400"
-          >
-            {t("heroCta")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-          >
-            {t("contactDescription")}
-          </motion.p>
+    <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="text-center text-white"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            Let's discuss how we can help you achieve your technology goals and drive your business forward.
+          </p>
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
           >
-            <Link href="/contact" passHref>
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 text-lg">{t("contact")}</Button>
-            </Link>
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3">
+              <Mail className="mr-2 h-5 w-5" />
+              {t("contact")}
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 bg-transparent"
+            >
+              View Our Work
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

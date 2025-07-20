@@ -7,8 +7,6 @@ import type { ToastActionElement, ToastProps } from "@/components/ui/toast"
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
 
-type ToastsMap = Map<string, Toast>
-
 type Toast = ToastProps & {
   id: string
   title?: React.ReactNode
@@ -72,7 +70,6 @@ export const reducer = (state: State, action: ActionType): State => {
 
     case "DISMISS_TOAST": {
       const { toastId } = action
-      // ! Side effects !
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
@@ -128,7 +125,7 @@ function generateId() {
   return Math.random().toString(36).substring(2, 9)
 }
 
-export function useToastWrapper(): UseToastReturn {
+export function useToast(): UseToastReturn {
   const [state, setState] = React.useState<State>(memoryState)
 
   React.useEffect(() => {

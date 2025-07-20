@@ -1,116 +1,134 @@
 export const translations = {
-  pt: {
-    home: "Início",
-    about: "Sobre",
-    services: "Serviços",
-    projects: "Projetos",
-    contact: "Contacto",
-    heroTitle: "Impulsionando o Futuro Digital de Moçambique",
-    heroSubtitle:
-      "Soluções tecnológicas inovadoras para transformar o seu negócio e a sua vida. Da ideia à implementação, somos o seu parceiro de confiança.",
-    heroCta: "Fale Connosco",
-    aboutTitle: "Quem Somos",
-    aboutDescription:
-      "A MozTech Solutions é uma empresa líder em tecnologia em Moçambique, dedicada a fornecer soluções inovadoras e personalizadas. Com uma equipa de especialistas apaixonados, transformamos desafios em oportunidades digitais, impulsionando o crescimento e a eficiência dos nossos clientes.",
-    servicesTeaserTitle: "Nossos Serviços",
-    servicesTeaserDescription:
-      "Oferecemos uma gama completa de serviços para atender às suas necessidades tecnológicas.",
-    projectsTeaserTitle: "Projetos em Destaque",
-    projectsTeaserDescription:
-      "Conheça alguns dos nossos trabalhos mais recentes e impactantes que demonstram a nossa expertise.",
-    testimonialsTitle: "O Que Dizem Nossos Clientes",
-    testimonialsDescription:
-      "A satisfação dos nossos clientes é a nossa maior recompensa. Veja o que eles têm a dizer sobre a MozTech Solutions.",
-    statsTitle: "Nossos Números",
-    statsDescription: "Resultados que falam por si.",
-    contactTitle: "Entre em Contacto",
-    contactDescription:
-      "Estamos prontos para ouvir as suas ideias e transformá-las em realidade digital. Preencha o formulário ou use os nossos contactos diretos.",
-    contactAddressLine1: "Av. Julius Nyerere, 123",
-    contactAddressLine2: "Maputo, Moçambique",
-    contactFormTitle: "Envie-nos uma Mensagem",
-    contactFormDescription: "Preencha o formulário abaixo e entraremos em contacto em breve.",
-    contactFormNameLabel: "Nome",
-    contactFormNamePlaceholder: "Seu nome completo",
-    contactFormEmailLabel: "Email",
-    contactFormEmailPlaceholder: "seu.email@exemplo.com",
-    contactFormMessageLabel: "Mensagem",
-    contactFormMessagePlaceholder: "Sua mensagem...",
-    contactFormSubmitButton: "Enviar Mensagem",
-    contactFormSuccessTitle: "Sucesso!",
-    contactFormSuccessMessage: "Sua mensagem foi enviada com sucesso. Entraremos em contacto em breve.",
-    contactFormErrorTitle: "Erro!",
-    contactFormErrorMessage: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.",
-    submitting: "Enviando...",
-    allRightsReserved: "Todos os direitos reservados.",
-    privacyPolicy: "Política de Privacidade",
-    termsOfService: "Termos de Serviço",
-    errorTitle: "Algo deu errado!",
-    errorDescription: "Ocorreu um erro inesperado. Nossa equipe foi notificada.",
-    errorTryAgain: "Tentar Novamente",
-    pageNotFoundTitle: "404 - Página Não Encontrada",
-    pageNotFoundDescription: "A página que você está procurando não existe.",
-    pageNotFoundGoHome: "Voltar para a Página Inicial",
-    loadingMessage: "Carregando...",
-    servicesPageTitle: "Nossos Serviços Completos",
-    servicesPageDescription: "Descubra como podemos impulsionar seu negócio com nossas soluções tecnológicas.",
-    projectsPageTitle: "Nossos Projetos",
-    projectsPageDescription: "Explore nosso portfólio de projetos inovadores e bem-sucedidos.",
-  },
   en: {
+    // Navigation
     home: "Home",
     about: "About",
     services: "Services",
     projects: "Projects",
     contact: "Contact",
-    heroTitle: "Powering Mozambique's Digital Future",
+
+    // Hero Section
+    heroTitle: "Innovative Technology Solutions for Mozambique",
     heroSubtitle:
-      "Innovative technology solutions to transform your business and your life. From idea to implementation, we are your trusted partner.",
-    heroCta: "Contact Us",
-    aboutTitle: "Who We Are",
+      "Empowering businesses with cutting-edge web development, mobile applications, and AI-driven solutions tailored for the African market.",
+    getStarted: "Get Started",
+    learnMore: "Learn More",
+
+    // About Section
+    aboutTitle: "About MozTech Solutions",
     aboutDescription:
-      "MozTech Solutions is a leading technology company in Mozambique, dedicated to providing innovative and customized solutions. With a team of passionate experts, we transform challenges into digital opportunities, driving our clients' growth and efficiency.",
-    servicesTeaserTitle: "Our Services",
-    servicesTeaserDescription: "We offer a full range of services to meet your technology needs.",
-    projectsTeaserTitle: "Featured Projects",
-    projectsTeaserDescription: "Discover some of our most recent and impactful works that demonstrate our expertise.",
+      "We are a leading technology company based in Mozambique, dedicated to providing innovative solutions that drive digital transformation across Africa. Our team of expert developers and consultants work closely with businesses to deliver custom software solutions.",
+
+    // Services
+    servicesTitle: "Our Services",
+    webDevelopment: "Web Development",
+    webDevDescription: "Custom websites and web applications built with modern technologies",
+    mobileDevelopment: "Mobile Development",
+    mobileDevDescription: "Native and cross-platform mobile applications for iOS and Android",
+    aiSolutions: "AI Solutions",
+    aiDescription: "Artificial intelligence and machine learning solutions for business automation",
+    consulting: "Tech Consulting",
+    consultingDescription: "Strategic technology consulting to guide your digital transformation",
+
+    // Projects
+    projectsTitle: "Featured Projects",
+    viewProject: "View Project",
+
+    // Stats
+    projectsCompleted: "Projects Completed",
+    clientsSatisfied: "Clients Satisfied",
+    yearsExperience: "Years Experience",
+    teamMembers: "Team Members",
+
+    // Testimonials
     testimonialsTitle: "What Our Clients Say",
-    testimonialsDescription:
-      "Our clients' satisfaction is our greatest reward. See what they have to say about MozTech Solutions.",
-    statsTitle: "Our Numbers",
-    statsDescription: "Results that speak for themselves.",
-    contactTitle: "Get in Touch",
-    contactDescription:
-      "We are ready to hear your ideas and turn them into digital reality. Fill out the form or use our direct contacts.",
-    contactAddressLine1: "Julius Nyerere Ave, 123",
-    contactAddressLine2: "Maputo, Mozambique",
-    contactFormTitle: "Send Us a Message",
-    contactFormDescription: "Fill out the form below and we will get back to you shortly.",
-    contactFormNameLabel: "Name",
-    contactFormNamePlaceholder: "Your full name",
-    contactFormEmailLabel: "Email",
-    contactFormEmailPlaceholder: "your.email@example.com",
-    contactFormMessageLabel: "Message",
-    contactFormMessagePlaceholder: "Your message...",
-    contactFormSubmitButton: "Send Message",
-    contactFormSuccessTitle: "Success!",
-    contactFormSuccessMessage: "Your message has been sent successfully. We will get back to you soon.",
-    contactFormErrorTitle: "Error!",
-    contactFormErrorMessage: "An error occurred while sending your message. Please try again.",
+
+    // Contact
+    contactTitle: "Get In Touch",
+    contactDescription: "Ready to start your next project? Contact us today for a free consultation.",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    sendMessage: "Send Message",
     submitting: "Submitting...",
+
+    // Footer
+    footerDescription:
+      "Leading technology solutions provider in Mozambique, empowering businesses with innovative digital solutions.",
+    quickLinks: "Quick Links",
+    followUs: "Follow Us",
     allRightsReserved: "All rights reserved.",
-    privacyPolicy: "Privacy Policy",
-    termsOfService: "Terms of Service",
-    errorTitle: "Something went wrong!",
-    errorDescription: "An unexpected error occurred. Our team has been notified.",
-    errorTryAgain: "Try Again",
-    pageNotFoundTitle: "404 - Page Not Found",
-    pageNotFoundDescription: "The page you are looking for does not exist.",
-    pageNotFoundGoHome: "Go to Homepage",
-    loadingMessage: "Loading...",
-    servicesPageTitle: "Our Comprehensive Services",
-    servicesPageDescription: "Discover how we can boost your business with our technology solutions.",
-    projectsPageTitle: "Our Projects",
-    projectsPageDescription: "Explore our portfolio of innovative and successful projects.",
+
+    // CTA
+    ctaTitle: "Ready to Transform Your Business?",
+    ctaDescription:
+      "Let's discuss how our technology solutions can help your business grow and succeed in the digital age.",
+    ctaButton: "Start Your Project",
+  },
+  pt: {
+    // Navigation
+    home: "Início",
+    about: "Sobre",
+    services: "Serviços",
+    projects: "Projetos",
+    contact: "Contacto",
+
+    // Hero Section
+    heroTitle: "Soluções Tecnológicas Inovadoras para Moçambique",
+    heroSubtitle:
+      "Capacitando empresas com desenvolvimento web de ponta, aplicações móveis e soluções baseadas em IA adaptadas para o mercado africano.",
+    getStarted: "Começar",
+    learnMore: "Saber Mais",
+
+    // About Section
+    aboutTitle: "Sobre a MozTech Solutions",
+    aboutDescription:
+      "Somos uma empresa de tecnologia líder baseada em Moçambique, dedicada a fornecer soluções inovadoras que impulsionam a transformação digital em África. A nossa equipa de programadores e consultores especializados trabalha em estreita colaboração com as empresas para fornecer soluções de software personalizadas.",
+
+    // Services
+    servicesTitle: "Os Nossos Serviços",
+    webDevelopment: "Desenvolvimento Web",
+    webDevDescription: "Websites personalizados e aplicações web construídas com tecnologias modernas",
+    mobileDevelopment: "Desenvolvimento Móvel",
+    mobileDevDescription: "Aplicações móveis nativas e multiplataforma para iOS e Android",
+    aiSolutions: "Soluções de IA",
+    aiDescription: "Soluções de inteligência artificial e aprendizagem automática para automação empresarial",
+    consulting: "Consultoria Tecnológica",
+    consultingDescription: "Consultoria tecnológica estratégica para orientar a sua transformação digital",
+
+    // Projects
+    projectsTitle: "Projetos em Destaque",
+    viewProject: "Ver Projeto",
+
+    // Stats
+    projectsCompleted: "Projetos Concluídos",
+    clientsSatisfied: "Clientes Satisfeitos",
+    yearsExperience: "Anos de Experiência",
+    teamMembers: "Membros da Equipa",
+
+    // Testimonials
+    testimonialsTitle: "O Que Dizem os Nossos Clientes",
+
+    // Contact
+    contactTitle: "Entre em Contacto",
+    contactDescription: "Pronto para começar o seu próximo projeto? Contacte-nos hoje para uma consulta gratuita.",
+    name: "Nome",
+    email: "Email",
+    message: "Mensagem",
+    sendMessage: "Enviar Mensagem",
+    submitting: "Enviando...",
+
+    // Footer
+    footerDescription:
+      "Fornecedor líder de soluções tecnológicas em Moçambique, capacitando empresas com soluções digitais inovadoras.",
+    quickLinks: "Links Rápidos",
+    followUs: "Siga-nos",
+    allRightsReserved: "Todos os direitos reservados.",
+
+    // CTA
+    ctaTitle: "Pronto para Transformar o Seu Negócio?",
+    ctaDescription:
+      "Vamos discutir como as nossas soluções tecnológicas podem ajudar o seu negócio a crescer e ter sucesso na era digital.",
+    ctaButton: "Iniciar o Seu Projeto",
   },
 }

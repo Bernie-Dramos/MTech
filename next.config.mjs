@@ -243,8 +243,7 @@ const nextConfig = {
         hostname: "**.cdn.builder.io",
       },
     ],
+    domains: ['placeholder.svg', 'localhost'],
     unoptimized: true,
-  },
-}
-
-export default nextConfig
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',

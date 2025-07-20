@@ -1,9 +1,9 @@
-"use client" // Error boundaries must be Client Components
+"use client"
 
 import { useEffect } from "react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/contexts/language-context"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AlertTriangle, RefreshCw } from "lucide-react"
 
 export default function Error({
   error,
@@ -12,41 +12,30 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  const { t } = useLanguage()
-
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error)
   }, [error])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900 text-white px-4 text-center">
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h2 className="text-4xl font-bold text-red-500 mb-4">{t("errorTitle")}</h2>
-      </motion.div>
-      <motion.p
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-lg text-slate-300 mb-8"
-      >
-        {t("errorDescription")}
-      </motion.p>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <Button
-          onClick={
-            // Attempt to recover by trying to re-render the segment
-            () => reset()
-          }
-          className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 text-lg"
-        >
-          {t("errorTryAgain")}
-        </Button>
-      </motion.div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+            <AlertTriangle className="h-6 w-6 text-red-600" />
+          </div>
+          <CardTitle className="text-xl font-semibold text-gray-900">Something went wrong!</CardTitle>
+          <CardDescription className="text-gray-600">
+            We encountered an unexpected error. Please try again.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-center">
+          <Button onClick={reset} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700">
+            <RefreshCw className="h-4 w-4" />
+            Try again
+          </Button>
+          <p className="mt-4 text-sm text-gray-500">If the problem persists, please contact support.</p>
+        </CardContent>
+      </Card>
     </div>
   )
 }

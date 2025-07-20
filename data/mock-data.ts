@@ -1,135 +1,97 @@
-import { type LucideIcon, Code, Layout, Zap, Shield, BarChart, Globe } from "lucide-react"
-
-interface Service {
-  id: string
-  title: string
-  description: string
-  icon: LucideIcon
-}
-
-interface Project {
-  id: string
-  name: string
-  description: string
-  image: string
-  link: string
-}
-
-interface Testimonial {
-  id: string
-  name: string
-  title: string
-  quote: string
-  image: string
-}
-
-interface Stat {
-  id: string
-  value: number
-  label: string
-  suffix: string
-}
-
-export const servicesData: Service[] = [
+export const statsData = [
   {
-    id: "software-development",
-    title: "Desenvolvimento de Software",
-    description: "Criamos soluções de software personalizadas e escaláveis para impulsionar o seu negócio.",
-    icon: Code,
+    number: 150,
+    label: "Projects Completed",
   },
   {
-    id: "digital-transformation",
-    title: "Transformação Digital",
-    description: "Ajudamos empresas a modernizar operações e adotar tecnologias digitais para maior eficiência.",
-    icon: Zap,
+    number: 98,
+    label: "Clients Satisfied",
   },
   {
-    id: "it-consulting",
-    title: "Consultoria em TI",
-    description: "Oferecemos aconselhamento estratégico para otimizar sua infraestrutura e processos de TI.",
-    icon: Layout,
+    number: 5,
+    label: "Years Experience",
   },
   {
-    id: "cybersecurity",
-    title: "Cibersegurança",
-    description: "Protegemos seus dados e sistemas contra ameaças cibernéticas com soluções robustas.",
-    icon: Shield,
-  },
-  {
-    id: "data-analytics",
-    title: "Análise de Dados",
-    description: "Transformamos dados brutos em insights acionáveis para decisões de negócio inteligentes.",
-    icon: BarChart,
-  },
-  {
-    id: "web-solutions",
-    title: "Soluções Web",
-    description: "Desenvolvemos websites e aplicações web modernas, responsivas e de alta performance.",
-    icon: Globe,
+    number: 25,
+    label: "Team Members",
   },
 ]
 
-export const projectsData: Project[] = [
+export const servicesData = [
   {
-    id: "project-1",
-    name: "Plataforma de Gestão Educacional",
-    description: "Sistema completo para administração escolar, matrículas e acompanhamento de alunos.",
-    image: "/placeholder.png?height=400&width=600",
-    link: "#",
+    title: "Web Development",
+    description:
+      "Custom websites and web applications built with modern technologies like React, Next.js, and Node.js.",
+    icon: "Code",
   },
   {
-    id: "project-2",
-    name: "E-commerce Personalizado",
-    description: "Loja online robusta com funcionalidades avançadas e integração de pagamentos.",
-    image: "/placeholder.png?height=400&width=600",
-    link: "#",
+    title: "Mobile Development",
+    description: "Native and cross-platform mobile applications for iOS and Android using React Native and Flutter.",
+    icon: "Smartphone",
   },
   {
-    id: "project-3",
-    name: "Aplicativo de Saúde Móvel",
-    description: "App para monitoramento de saúde e agendamento de consultas médicas.",
-    image: "/placeholder.png?height=400&width=600",
-    link: "#",
+    title: "AI Solutions",
+    description: "Artificial intelligence and machine learning solutions for business automation and data analysis.",
+    icon: "Brain",
   },
   {
-    id: "project-4",
-    name: "Sistema de Gestão Financeira",
-    description: "Software para controle de despesas, receitas e relatórios financeiros.",
-    image: "/placeholder.png?height=400&width=600",
-    link: "#",
+    title: "Cloud Services",
+    description: "Cloud infrastructure setup, migration, and management using AWS, Azure, and Google Cloud.",
+    icon: "Cloud",
+  },
+  {
+    title: "Digital Marketing",
+    description: "SEO optimization, social media management, and digital advertising campaigns.",
+    icon: "TrendingUp",
+  },
+  {
+    title: "Consulting",
+    description: "Technology consulting and digital transformation strategies for businesses of all sizes.",
+    icon: "Users",
   },
 ]
 
-export const testimonialsData: Testimonial[] = [
+export const projectsData = [
   {
-    id: "testimonial-1",
-    name: "Ana Silva",
-    title: "CEO, Startup Inovadora",
-    quote:
-      "A MozTech Solutions superou nossas expectativas. O software desenvolvido é intuitivo e transformou nossa operação.",
-    image: "/placeholder-user.png",
+    title: "E-Commerce Platform",
+    description: "Modern e-commerce solution for local businesses",
+    image: "/placeholder.jpg",
+    technologies: ["React", "Node.js", "MongoDB"],
   },
   {
-    id: "testimonial-2",
+    title: "Mobile Banking App",
+    description: "Secure mobile banking application",
+    image: "/placeholder.jpg",
+    technologies: ["React Native", "Firebase", "Stripe"],
+  },
+  {
+    title: "AI Analytics Dashboard",
+    description: "Business intelligence dashboard with AI insights",
+    image: "/placeholder.jpg",
+    technologies: ["Python", "TensorFlow", "React"],
+  },
+]
+
+export const testimonialsData = [
+  {
+    name: "João Silva",
+    company: "TechCorp Mozambique",
+    content:
+      "MozTech Solutions delivered an exceptional web application that transformed our business operations. Their expertise in modern technologies is outstanding.",
+    avatar: "/placeholder-user.jpg",
+  },
+  {
+    name: "Maria Santos",
+    company: "Digital Ventures",
+    content:
+      "The mobile app developed by MozTech exceeded our expectations. The team was professional, responsive, and delivered on time.",
+    avatar: "/placeholder-user.jpg",
+  },
+  {
     name: "Carlos Mendes",
-    title: "Diretor de TI, Grande Empresa",
-    quote:
-      "A consultoria em TI da MozTech Solutions foi fundamental para otimizar nossa infraestrutura e garantir a segurança dos nossos dados.",
-    image: "/placeholder-user.png",
+    company: "Innovation Hub",
+    content:
+      "Working with MozTech on our AI project was a game-changer. They brought cutting-edge solutions that gave us a competitive advantage.",
+    avatar: "/placeholder-user.jpg",
   },
-  {
-    id: "testimonial-3",
-    name: "Sofia Costa",
-    title: "Empreendedora",
-    quote:
-      "Graças à MozTech Solutions, meu e-commerce está mais rápido e com uma experiência de usuário incrível. Recomendo!",
-    image: "/placeholder-user.png",
-  },
-]
-
-export const statsData: Stat[] = [
-  { id: "clients", value: 50, label: "Clientes Satisfeitos", suffix: "+" },
-  { id: "projects", value: 100, label: "Projetos Concluídos", suffix: "+" },
-  { id: "experience", value: 10, label: "Anos de Experiência", suffix: "+" },
-  { id: "awards", value: 5, label: "Prémios Ganhos", suffix: "+" },
 ]

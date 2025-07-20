@@ -12,104 +12,83 @@ export function ParticleBackground() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    let animationFrameId: number
-
-    const particles: Particle[] = []
-    const numParticles = 100
-    const maxDistance = 100 // Max distance for lines to connect
-
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-
-    window.addEventListener("resize", () => {
+    const resizeCanvas = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-      initParticles()
-    })
+    }
 
-    class Particle {
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    const particles: Array<{
       x: number
       y: number
+      vx: number
+      vy: number
       size: number
-      speedX: number
-      speedY: number
-      color: string
+      opacity: number
+    }> = []
 
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.size = Math.random() * 2 + 1 // Particle size between 1 and 3
-        this.speedX = Math.random() * 0.5 - 0.25 // Speed between -0.25 and 0.25
-        this.speedY = Math.random() * 0.5 - 0.25
-        this.color = "rgba(74, 222, 255, 0.8)" // Tailwind cyan-400 with alpha
-      }
+    // Create particles
+    for (let i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.2,
+      })
+    }
 
-      update() {
-        this.x += this.speedX
-        this.y += this.speedY
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        // Bounce off edges
-        if (this.x > canvas.width || this.x < 0) {
-          this.speedX *= -1
-        }
-        if (this.y > canvas.height || this.y < 0) {
-          this.speedY *= -1
-        }
-      }
+      particles.forEach((particle) => {
+        // Update position
+        particle.x += particle.vx
+        particle.y += particle.vy
 
-      draw() {
-        ctx.fillStyle = this.color
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width
+        if (particle.x > canvas.width) particle.x = 0
+        if (particle.y < 0) particle.y = canvas.height
+        if (particle.y > canvas.height) particle.y = 0
+
+        // Draw particle
         ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`
         ctx.fill()
-      }
-    }
+      })
 
-    function initParticles() {
-      particles.length = 0 // Clear existing particles
-      for (let i = 0; i < numParticles; i++) {
-        particles.push(new Particle())
-      }
-    }
+      // Draw connections
+      particles.forEach((particle, i) => {
+        particles.slice(i + 1).forEach((otherParticle) => {
+          const dx = particle.x - otherParticle.x
+          const dy = particle.y - otherParticle.y
+          const distance = Math.sqrt(dx * dx + dy * dy)
 
-    function connectParticles() {
-      for (let a = 0; a < particles.length; a++) {
-        for (let b = a; b < particles.length; b++) {
-          const dist = Math.sqrt((particles[a].x - particles[b].x) ** 2 + (particles[a].y - particles[b].y) ** 2)
-          if (dist < maxDistance) {
-            ctx.strokeStyle = `rgba(74, 222, 255, ${1 - dist / maxDistance})` // Fade lines
-            ctx.lineWidth = 0.5
+          if (distance < 100) {
             ctx.beginPath()
-            ctx.moveTo(particles[a].x, particles[a].y)
-            ctx.lineTo(particles[b].x, particles[b].y)
+            ctx.moveTo(particle.x, particle.y)
+            ctx.lineTo(otherParticle.x, otherParticle.y)
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 100)})`
+            ctx.lineWidth = 0.5
             ctx.stroke()
           }
-        }
-      }
+        })
+      })
+
+      requestAnimationFrame(animate)
     }
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update()
-        particles[i].draw()
-      }
-      connectParticles()
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    initParticles()
     animate()
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
-      window.removeEventListener("resize", () => {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-        initParticles()
-      })
+      window.removeEventListener("resize", resizeCanvas)
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 bg-transparent" />
+  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} />
 }
