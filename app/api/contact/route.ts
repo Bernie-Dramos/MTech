@@ -21,10 +21,19 @@ export async function POST(request: NextRequest) {
     // 2. Send email notification
     // 3. Integrate with CRM
 
-    // For now, we'll just simulate a successful submission
+    // For now, we'll just simulate a successful response
     console.log("Contact form submission:", { name, email, message })
 
-    return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 })
+    // Simulate processing delay
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Message sent successfully!",
+      },
+      { status: 200 },
+    )
   } catch (error) {
     console.error("Contact form error:", error)
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })

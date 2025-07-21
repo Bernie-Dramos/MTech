@@ -1,19 +1,21 @@
-import ProjectsClientPage from "./ProjectsClientPage"
-import StructuredData from "@/components/structured-data"
+import type { Metadata } from "next"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import ProjectsPageClient from "./ProjectsPageClient"
+
+export const metadata: Metadata = {
+  title: "Projects - MakambaTech",
+  description: "Explore our portfolio of successful web development and mobile app projects in Mozambique.",
+}
 
 export default function ProjectsPage() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Our Projects - MozTech Solutions",
-    url: "https://moztechsolutions.com/projects",
-    description: "Explore the innovative and successful projects developed by MozTech Solutions.",
-  }
-
   return (
     <>
-      <StructuredData data={structuredData} />
-      <ProjectsClientPage />
+      <Header />
+      <main>
+        <ProjectsPageClient />
+      </main>
+      <Footer />
     </>
   )
 }

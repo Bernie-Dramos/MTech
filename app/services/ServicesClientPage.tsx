@@ -1,74 +1,91 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { servicesData } from "@/data/mock-data"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Code, Smartphone, Brain, Zap, CheckCircle } from "lucide-react"
+import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
+import { servicesData } from "@/data/mock-data"
+
+const iconMap = {
+  Code,
+  Smartphone,
+  Brain,
+  Zap,
+}
 
 export default function ServicesClientPage() {
   const { t } = useLanguage()
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  }
-
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-cyan-400"
-          >
-            {t("servicesPageTitle")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-          >
-            {t("servicesPageDescription")}
-          </motion.p>
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t("servicesTitle")}</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">{t("servicesSubtitle")}</p>
         </div>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="mx-auto grid gap-6 py-12 lg:grid-cols-3 xl:grid-cols-3"
-        >
-          {servicesData.map((service) => (
-            <motion.div key={service.id} variants={itemVariants}>
-              <Card className="flex flex-col items-center justify-center p-6 text-center bg-slate-800 border-slate-700 hover:border-cyan-500 transition-all duration-300 ease-in-out group">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {servicesData.map((service) => {
+            const IconComponent = iconMap[service.icon as keyof typeof iconMap]
+
+            return (
+              <Card key={service.id} className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
-                  <div className="flex items-center justify-center mb-4">
-                    <service.icon className="h-12 w-12 text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <IconComponent className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">{service.title}</CardTitle>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                    {t(service.title)}
-                  </CardTitle>
+                  <CardDescription className="text-gray-600 text-base">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-300">{t(service.description)}</p>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">Key Features:</h4>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, index) => (
+                          <li key={index} className="flex items-center space-x-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {service.technologies.map((tech) => (
+                          <Badge key={tech} variant="outline">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center bg-white rounded-lg p-8 shadow-sm">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to get started?</h2>
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Let's discuss your project and how we can help you achieve your goals with our comprehensive technology
+            solutions.
+          </p>
+          <Button asChild size="lg">
+            <Link href="/contact">Get a Free Consultation</Link>
+          </Button>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }

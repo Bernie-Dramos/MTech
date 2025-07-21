@@ -2,46 +2,51 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Mail } from "lucide-react"
+import { ArrowRight, MessageCircle } from "lucide-react"
+import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 
 export function CallToAction() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-      <div className="container mx-auto px-4">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-green-600">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center text-white"
+          className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Let's discuss how we can help you achieve your technology goals and drive your business forward.
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">{t("ctaTitle")}</h2>
+          <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
+            {t("ctaDescription")}
           </p>
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3">
-              <Mail className="mr-2 h-5 w-5" />
-              {t("contact")}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="w-full sm:w-auto bg-white text-blue-600 hover:bg-gray-100 text-base sm:text-lg px-6 sm:px-8 py-3 transition-all duration-200 hover:scale-105"
+            >
+              <Link href="/contact" className="flex items-center justify-center space-x-2">
+                <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+                <span>{t("startProject")}</span>
+              </Link>
             </Button>
             <Button
-              variant="outline"
+              asChild
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 bg-transparent"
+              variant="outline"
+              className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-blue-600 text-base sm:text-lg px-6 sm:px-8 py-3 transition-all duration-200 hover:scale-105 bg-transparent"
             >
-              View Our Work
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Link href="/projects" className="flex items-center justify-center space-x-2">
+                <span>{t("viewOurWork")}</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </Link>
             </Button>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

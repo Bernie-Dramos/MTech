@@ -9,19 +9,18 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MozTech Solutions - Leading Technology Company in Mozambique",
-  description:
-    "MozTech Solutions provides cutting-edge web development, mobile apps, AI solutions, and digital transformation services in Mozambique.",
-  keywords: "web development, mobile apps, AI solutions, digital transformation, Mozambique, technology",
-  authors: [{ name: "MozTech Solutions" }],
-  creator: "MozTech Solutions",
-  publisher: "MozTech Solutions",
+  title: "MakambaTech - Leading Technology Company in Mozambique",
+  description: "MakambaTech provides cutting-edge web development and mobile app development services in Mozambique.",
+  keywords: "web development, mobile apps, technology, Mozambique, software development",
+  authors: [{ name: "MakambaTech" }],
+  creator: "MakambaTech",
+  publisher: "MakambaTech",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://moztech-solutions.vercel.app"),
+  metadataBase: new URL("https://makambatech.vercel.app"),
   alternates: {
     canonical: "/",
     languages: {
@@ -30,17 +29,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "MozTech Solutions - Leading Technology Company in Mozambique",
-    description:
-      "MozTech Solutions provides cutting-edge web development, mobile apps, AI solutions, and digital transformation services in Mozambique.",
-    url: "https://moztech-solutions.vercel.app",
-    siteName: "MozTech Solutions",
+    title: "MakambaTech - Leading Technology Company in Mozambique",
+    description: "MakambaTech provides cutting-edge web development and mobile app development services in Mozambique.",
+    url: "https://makambatech.vercel.app",
+    siteName: "MakambaTech",
     images: [
       {
-        url: "/placeholder-logo.png",
+        url: "/makambatech-logo.png",
         width: 800,
         height: 600,
-        alt: "MozTech Solutions Logo",
+        alt: "MakambaTech Logo",
       },
     ],
     locale: "en_US",
@@ -48,11 +46,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MozTech Solutions - Leading Technology Company in Mozambique",
-    description:
-      "MozTech Solutions provides cutting-edge web development, mobile apps, AI solutions, and digital transformation services in Mozambique.",
-    images: ["/placeholder-logo.png"],
-    creator: "@moztechsolutions",
+    title: "MakambaTech - Leading Technology Company in Mozambique",
+    description: "MakambaTech provides cutting-edge web development and mobile app development services in Mozambique.",
+    images: ["/makambatech-logo.png"],
+    creator: "@makambatech",
   },
   robots: {
     index: true,

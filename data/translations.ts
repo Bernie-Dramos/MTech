@@ -6,64 +6,116 @@ export const translations = {
     services: "Services",
     projects: "Projects",
     contact: "Contact",
+    getStarted: "Get Started",
 
     // Hero Section
-    heroTitle: "Innovative Technology Solutions for Mozambique",
-    heroSubtitle:
-      "Empowering businesses with cutting-edge web development, mobile applications, and AI-driven solutions tailored for the African market.",
-    getStarted: "Get Started",
-    learnMore: "Learn More",
+    heroTitle: "Innovative Technology Solutions",
+    heroTitleHighlight: "for Mozambique",
+    heroDescription:
+      "We create cutting-edge web and mobile applications that drive business growth and digital transformation in Mozambique.",
+    viewProjects: "View Projects",
 
     // About Section
-    aboutTitle: "About MozTech Solutions",
+    aboutTitle: "About MakambaTech",
     aboutDescription:
-      "We are a leading technology company based in Mozambique, dedicated to providing innovative solutions that drive digital transformation across Africa. Our team of expert developers and consultants work closely with businesses to deliver custom software solutions.",
+      "We are a leading technology company in Mozambique, specializing in creating innovative web and mobile solutions that help businesses thrive in the digital age.",
+    innovation: "Innovation",
+    innovationDesc: "We embrace cutting-edge technologies to deliver innovative solutions that drive business growth.",
+    collaboration: "Collaboration",
+    collaborationDesc: "We work closely with our clients to understand their needs and deliver tailored solutions.",
+    excellence: "Excellence",
+    excellenceDesc: "We maintain the highest standards of quality in every project we undertake.",
+    creativity: "Creativity",
+    creativityDesc: "We think outside the box to create unique and engaging digital experiences.",
 
-    // Services
+    // Services Section
     servicesTitle: "Our Services",
+    servicesSubtitle:
+      "We specialize in creating innovative digital solutions that help businesses succeed in today's competitive market.",
     webDevelopment: "Web Development",
-    webDevDescription: "Custom websites and web applications built with modern technologies",
+    webDevelopmentDesc:
+      "Custom web applications built with modern technologies for optimal performance and user experience.",
     mobileDevelopment: "Mobile Development",
-    mobileDevDescription: "Native and cross-platform mobile applications for iOS and Android",
-    aiSolutions: "AI Solutions",
-    aiDescription: "Artificial intelligence and machine learning solutions for business automation",
-    consulting: "Tech Consulting",
-    consultingDescription: "Strategic technology consulting to guide your digital transformation",
+    mobileDevelopmentDesc: "Native and cross-platform mobile applications that engage users and drive business growth.",
 
-    // Projects
-    projectsTitle: "Featured Projects",
-    viewProject: "View Project",
+    // Service Features
+    responsiveDesign: "Responsive Design",
+    ecommerceFeature: "E-commerce Solutions",
+    cmsFeature: "Content Management Systems",
+    pwaFeature: "Progressive Web Apps",
+    iosAndroidFeature: "iOS & Android Apps",
+    crossPlatformFeature: "Cross-platform Development",
+    appOptimizationFeature: "App Store Optimization",
+    mobileUxFeature: "Mobile UI/UX Design",
 
-    // Stats
-    projectsCompleted: "Projects Completed",
-    clientsSatisfied: "Clients Satisfied",
-    yearsExperience: "Years Experience",
-    teamMembers: "Team Members",
+    // Featured Projects
+    featuredProjects: "Featured Projects",
+    featuredProjectsDesc: "Explore some of our recent work and see how we've helped businesses transform digitally.",
+    ecommerceProject: "E-Commerce Platform",
+    ecommerceProjectDesc: "Modern e-commerce solution with payment integration and inventory management",
+    bankingProject: "Mobile Banking App",
+    bankingProjectDesc: "Secure mobile banking application with biometric authentication",
+    restaurantProject: "Restaurant Management System",
+    restaurantProjectDesc: "Complete restaurant management solution with POS and inventory tracking",
+    completed: "Completed",
+    inProgress: "In Progress",
+    viewProject: "View",
+    viewCode: "Code",
+    viewAllProjects: "View All Projects",
 
     // Testimonials
-    testimonialsTitle: "What Our Clients Say",
+    testimonials: "What Our Clients Say",
+    testimonialsDesc: "Don't just take our word for it - hear from some of our satisfied clients.",
+    techStartup: "Tech Startup",
+    localBusiness: "Local Business",
+    ecommerceStore: "E-commerce Store",
+    testimonial1:
+      "MakambaTech delivered an exceptional web application that exceeded our expectations. Their attention to detail and technical expertise is outstanding.",
+    testimonial2:
+      "The mobile app they developed for our business has significantly improved our customer engagement. Highly professional team!",
+    testimonial3:
+      "Working with MakambaTech was a pleasure. They understood our needs perfectly and delivered a robust e-commerce solution.",
 
-    // Contact
-    contactTitle: "Get In Touch",
-    contactDescription: "Ready to start your next project? Contact us today for a free consultation.",
-    name: "Name",
-    email: "Email",
-    message: "Message",
-    sendMessage: "Send Message",
-    submitting: "Submitting...",
+    // Call to Action
+    ctaTitle: "Ready to Transform Your Business?",
+    ctaDescription:
+      "Let's work together to create innovative solutions that drive your business forward. Contact us today to discuss your project.",
+    startProject: "Start Your Project",
+    viewOurWork: "View Our Work",
 
     // Footer
     footerDescription:
-      "Leading technology solutions provider in Mozambique, empowering businesses with innovative digital solutions.",
+      "Leading technology company in Mozambique, creating innovative web and mobile solutions that drive business growth and digital transformation.",
     quickLinks: "Quick Links",
-    followUs: "Follow Us",
-    allRightsReserved: "All rights reserved.",
+    contactInfo: "Contact Info",
+    allRightsReserved: "All rights reserved",
 
-    // CTA
-    ctaTitle: "Ready to Transform Your Business?",
-    ctaDescription:
-      "Let's discuss how our technology solutions can help your business grow and succeed in the digital age.",
-    ctaButton: "Start Your Project",
+    // Contact Page
+    contactTitle: "Get In Touch",
+    contactSubtitle: "Ready to start your project? We'd love to hear from you.",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    send: "Send Message",
+    sending: "Sending...",
+    messageSent: "Message sent successfully!",
+    messageError: "Failed to send message. Please try again.",
+
+    // Business Hours
+    businessHours: "Business Hours",
+    monday: "Monday - Friday",
+    saturday: "Saturday",
+    sunday: "Sunday",
+    closed: "Closed",
+
+    // Stats
+    projectsCompleted: "Projects Completed",
+    happyClients: "Happy Clients",
+    yearsExperience: "Years Experience",
+    support: "24/7 Support",
+
+    // Additional
+    learnMore: "Learn More",
   },
   pt: {
     // Navigation
@@ -72,63 +124,119 @@ export const translations = {
     services: "Serviços",
     projects: "Projetos",
     contact: "Contacto",
+    getStarted: "Começar",
 
     // Hero Section
-    heroTitle: "Soluções Tecnológicas Inovadoras para Moçambique",
-    heroSubtitle:
-      "Capacitando empresas com desenvolvimento web de ponta, aplicações móveis e soluções baseadas em IA adaptadas para o mercado africano.",
-    getStarted: "Começar",
-    learnMore: "Saber Mais",
+    heroTitle: "Soluções Tecnológicas Inovadoras",
+    heroTitleHighlight: "para Moçambique",
+    heroDescription:
+      "Criamos aplicações web e móveis de ponta que impulsionam o crescimento empresarial e a transformação digital em Moçambique.",
+    viewProjects: "Ver Projetos",
 
     // About Section
-    aboutTitle: "Sobre a MozTech Solutions",
+    aboutTitle: "Sobre a MakambaTech",
     aboutDescription:
-      "Somos uma empresa de tecnologia líder baseada em Moçambique, dedicada a fornecer soluções inovadoras que impulsionam a transformação digital em África. A nossa equipa de programadores e consultores especializados trabalha em estreita colaboração com as empresas para fornecer soluções de software personalizadas.",
+      "Somos uma empresa líder em tecnologia em Moçambique, especializada na criação de soluções web e móveis inovadoras que ajudam as empresas a prosperar na era digital.",
+    innovation: "Inovação",
+    innovationDesc:
+      "Abraçamos tecnologias de ponta para fornecer soluções inovadoras que impulsionam o crescimento empresarial.",
+    collaboration: "Colaboração",
+    collaborationDesc:
+      "Trabalhamos em estreita colaboração com os nossos clientes para entender as suas necessidades e fornecer soluções personalizadas.",
+    excellence: "Excelência",
+    excellenceDesc: "Mantemos os mais altos padrões de qualidade em cada projeto que empreendemos.",
+    creativity: "Criatividade",
+    creativityDesc: "Pensamos fora da caixa para criar experiências digitais únicas e envolventes.",
 
-    // Services
-    servicesTitle: "Os Nossos Serviços",
+    // Services Section
+    servicesTitle: "Nossos Serviços",
+    servicesSubtitle:
+      "Especializamo-nos na criação de soluções digitais inovadoras que ajudam as empresas a ter sucesso no mercado competitivo de hoje.",
     webDevelopment: "Desenvolvimento Web",
-    webDevDescription: "Websites personalizados e aplicações web construídas com tecnologias modernas",
+    webDevelopmentDesc:
+      "Aplicações web personalizadas construídas com tecnologias modernas para desempenho ideal e experiência do utilizador.",
     mobileDevelopment: "Desenvolvimento Móvel",
-    mobileDevDescription: "Aplicações móveis nativas e multiplataforma para iOS e Android",
-    aiSolutions: "Soluções de IA",
-    aiDescription: "Soluções de inteligência artificial e aprendizagem automática para automação empresarial",
-    consulting: "Consultoria Tecnológica",
-    consultingDescription: "Consultoria tecnológica estratégica para orientar a sua transformação digital",
+    mobileDevelopmentDesc:
+      "Aplicações móveis nativas e multiplataforma que envolvem utilizadores e impulsionam o crescimento empresarial.",
 
-    // Projects
-    projectsTitle: "Projetos em Destaque",
-    viewProject: "Ver Projeto",
+    // Service Features
+    responsiveDesign: "Design Responsivo",
+    ecommerceFeature: "Soluções E-commerce",
+    cmsFeature: "Sistemas de Gestão de Conteúdo",
+    pwaFeature: "Aplicações Web Progressivas",
+    iosAndroidFeature: "Apps iOS e Android",
+    crossPlatformFeature: "Desenvolvimento Multiplataforma",
+    appOptimizationFeature: "Otimização da App Store",
+    mobileUxFeature: "Design UI/UX Móvel",
 
-    // Stats
-    projectsCompleted: "Projetos Concluídos",
-    clientsSatisfied: "Clientes Satisfeitos",
-    yearsExperience: "Anos de Experiência",
-    teamMembers: "Membros da Equipa",
+    // Featured Projects
+    featuredProjects: "Projetos em Destaque",
+    featuredProjectsDesc:
+      "Explore alguns dos nossos trabalhos recentes e veja como ajudámos empresas a transformar-se digitalmente.",
+    ecommerceProject: "Plataforma E-Commerce",
+    ecommerceProjectDesc: "Solução e-commerce moderna com integração de pagamentos e gestão de inventário",
+    bankingProject: "App de Banca Móvel",
+    bankingProjectDesc: "Aplicação bancária móvel segura com autenticação biométrica",
+    restaurantProject: "Sistema de Gestão de Restaurante",
+    restaurantProjectDesc: "Solução completa de gestão de restaurante com POS e rastreamento de inventário",
+    completed: "Concluído",
+    inProgress: "Em Progresso",
+    viewProject: "Ver",
+    viewCode: "Código",
+    viewAllProjects: "Ver Todos os Projetos",
 
     // Testimonials
-    testimonialsTitle: "O Que Dizem os Nossos Clientes",
+    testimonials: "O Que Dizem os Nossos Clientes",
+    testimonialsDesc: "Não acredite apenas na nossa palavra - ouça alguns dos nossos clientes satisfeitos.",
+    techStartup: "Startup Tecnológica",
+    localBusiness: "Negócio Local",
+    ecommerceStore: "Loja E-commerce",
+    testimonial1:
+      "A MakambaTech entregou uma aplicação web excepcional que superou as nossas expectativas. A sua atenção aos detalhes e experiência técnica é notável.",
+    testimonial2:
+      "A aplicação móvel que desenvolveram para o nosso negócio melhorou significativamente o envolvimento dos nossos clientes. Equipa altamente profissional!",
+    testimonial3:
+      "Trabalhar com a MakambaTech foi um prazer. Entenderam perfeitamente as nossas necessidades e entregaram uma solução e-commerce robusta.",
 
-    // Contact
-    contactTitle: "Entre em Contacto",
-    contactDescription: "Pronto para começar o seu próximo projeto? Contacte-nos hoje para uma consulta gratuita.",
-    name: "Nome",
-    email: "Email",
-    message: "Mensagem",
-    sendMessage: "Enviar Mensagem",
-    submitting: "Enviando...",
+    // Call to Action
+    ctaTitle: "Pronto para Transformar o Seu Negócio?",
+    ctaDescription:
+      "Vamos trabalhar juntos para criar soluções inovadoras que impulsionem o seu negócio. Entre em contacto hoje para discutir o seu projeto.",
+    startProject: "Iniciar o Seu Projeto",
+    viewOurWork: "Ver o Nosso Trabalho",
 
     // Footer
     footerDescription:
-      "Fornecedor líder de soluções tecnológicas em Moçambique, capacitando empresas com soluções digitais inovadoras.",
+      "Empresa líder em tecnologia em Moçambique, criando soluções web e móveis inovadoras que impulsionam o crescimento empresarial e a transformação digital.",
     quickLinks: "Links Rápidos",
-    followUs: "Siga-nos",
-    allRightsReserved: "Todos os direitos reservados.",
+    contactInfo: "Informações de Contacto",
+    allRightsReserved: "Todos os direitos reservados",
 
-    // CTA
-    ctaTitle: "Pronto para Transformar o Seu Negócio?",
-    ctaDescription:
-      "Vamos discutir como as nossas soluções tecnológicas podem ajudar o seu negócio a crescer e ter sucesso na era digital.",
-    ctaButton: "Iniciar o Seu Projeto",
+    // Contact Page
+    contactTitle: "Entre em Contacto",
+    contactSubtitle: "Pronto para começar o seu projeto? Adoraríamos ouvir de si.",
+    name: "Nome",
+    email: "Email",
+    message: "Mensagem",
+    send: "Enviar Mensagem",
+    sending: "Enviando...",
+    messageSent: "Mensagem enviada com sucesso!",
+    messageError: "Falha ao enviar mensagem. Tente novamente.",
+
+    // Business Hours
+    businessHours: "Horário de Funcionamento",
+    monday: "Segunda - Sexta",
+    saturday: "Sábado",
+    sunday: "Domingo",
+    closed: "Fechado",
+
+    // Stats
+    projectsCompleted: "Projetos Concluídos",
+    happyClients: "Clientes Satisfeitos",
+    yearsExperience: "Anos de Experiência",
+    support: "Suporte 24/7",
+
+    // Additional
+    learnMore: "Saber Mais",
   },
 }

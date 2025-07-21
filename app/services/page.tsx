@@ -1,19 +1,22 @@
+import type { Metadata } from "next"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import ServicesClientPage from "./ServicesClientPage"
-import StructuredData from "@/components/structured-data"
+
+export const metadata: Metadata = {
+  title: "Our Services - MakambaTech",
+  description:
+    "Discover MakambaTech's comprehensive technology services including web development, mobile apps, AI solutions, and digital transformation.",
+}
 
 export default function ServicesPage() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Our Services - MozTech Solutions",
-    url: "https://moztechsolutions.com/services",
-    description: "Discover the comprehensive range of technology services offered by MozTech Solutions.",
-  }
-
   return (
     <>
-      <StructuredData data={structuredData} />
-      <ServicesClientPage />
+      <Header />
+      <main className="pt-20">
+        <ServicesClientPage />
+      </main>
+      <Footer />
     </>
   )
 }

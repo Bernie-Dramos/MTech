@@ -1,115 +1,108 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
-import { motion } from "framer-motion"
 
 export function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden pt-16 md:pt-20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Content */}
+          <motion.div
+            className="text-center lg:text-left order-2 lg:order-1"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {t("heroTitle")}
-          </motion.h1>
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {t("heroTitle")}{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">
+                {t("heroTitleHighlight")}
+              </span>
+            </motion.h1>
 
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {t("heroSubtitle")}
-          </motion.p>
+            <motion.p
+              className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {t("heroDescription")}
+            </motion.p>
 
-          <motion.p
-            className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {t("heroDescription")}
-          </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+            </motion.div>
+          </motion.div>
 
+          {/* Right Column - Logo/Visual */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex justify-center lg:justify-end order-1 lg:order-2"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-              {t("getStarted")}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="px-8 py-3 bg-transparent">
-              <Play className="mr-2 h-5 w-5" />
-              {t("learnMore")}
-            </Button>
+            <div className="relative">
+              <motion.div
+                className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 relative"
+                animate={{
+                  rotate: [0, 5, -5, 0],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
+              >
+                <Image
+                  src="/makambatech-logo.png"
+                  alt="MakambaTech - Innovation and Growth"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  priority
+                />
+              </motion.div>
+
+              {/* Floating Elements - Hidden on small screens */}
+              <motion.div
+                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-blue-100 rounded-full flex items-center justify-center hidden sm:flex"
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              >
+                <span className="text-lg sm:text-xl md:text-2xl">💡</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center hidden sm:flex"
+                animate={{ y: [10, -10, 10] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              >
+                <span className="text-base sm:text-lg md:text-xl">🚀</span>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-      >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2" />
-        </div>
-      </motion.div>
     </section>
   )
 }
