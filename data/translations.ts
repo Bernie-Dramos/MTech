@@ -93,6 +93,8 @@ export const translations = {
     // Contact Page
     contactTitle: "Get In Touch",
     contactSubtitle: "Ready to start your project? We'd love to hear from you.",
+    sendMessage: "Send us a Message",
+    fillForm: "Fill out the form below and we'll get back to you soon.",
     name: "Name",
     email: "Email",
     message: "Message",
@@ -215,6 +217,8 @@ export const translations = {
     // Contact Page
     contactTitle: "Entre em Contacto",
     contactSubtitle: "Pronto para começar o seu projeto? Adoraríamos ouvir de si.",
+    sendMessage: "Envia-nos uma mensagem",
+    fillForm: "Preencha o formulario abaixo e entraremos em contato com voce imediatamente.",
     name: "Nome",
     email: "Email",
     message: "Mensagem",
