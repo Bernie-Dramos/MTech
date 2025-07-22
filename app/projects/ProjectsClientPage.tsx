@@ -58,17 +58,17 @@ export default function ProjectsClientPage() {
               <Card className="bg-slate-800 border-slate-700 text-white overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300">
                 <SeoOptimizedImage
                   src={project.image}
-                  alt={t(project.name)}
+                  alt={t(project.title)}
                   width={600}
                   height={400}
                   className="w-full h-60 object-cover"
                 />
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-cyan-400">{t(project.name)}</CardTitle>
+                  <CardTitle className="text-2xl font-bold text-cyan-400">{t(project.title)}</CardTitle>
                   <CardDescription className="text-slate-300">{t(project.description)}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href={project.link} passHref>
+                  <Link href={project.url} passHref>
                     <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white">
                       {t("viewProject")} {/* Assuming you'll add this translation key */}
                     </Button>
