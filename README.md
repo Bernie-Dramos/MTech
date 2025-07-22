@@ -1,6 +1,6 @@
-# MozTech Solutions Website
+# MakambaTech Website
 
-This is a Next.js application for MozTech Solutions, a leading technology company in Mozambique. The website showcases their services, projects, testimonials, and provides a contact form.
+This is a Next.js application for MakambaTech, a leading technology company in Mozambique. The website showcases their services, projects, testimonials, and provides a contact form.
 
 ## Features
 
@@ -20,21 +20,6 @@ This is a Next.js application for MozTech Solutions, a leading technology compan
 
 - Node.js (v18.x or higher)
 - npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   \`\`\`bash
-   git clone https://github.com/your-username/moztech-solutions.git
-   cd moztech-solutions
-   \`\`\`
-
-2. Install dependencies:
-   \`\`\`bash
-   npm install
-   # or
-   yarn install
-   \`\`\`
 
 ### Running Locally
 
@@ -62,91 +47,3 @@ This is a Next.js application for MozTech Solutions, a leading technology compan
    yarn start
    \`\`\`
 
-## Project Structure
-
-\`\`\`
-.
-├── app/
-│   ├── api/
-│   │   └── contact/
-│   │       └── route.ts        # API route for contact form
-│   ├── contact/
-│   │   ├── ContactPageClient.tsx # Client component for contact page
-│   │   └── page.tsx            # Server component for contact page
-│   ├── error.tsx               # Custom error boundary
-│   ├── globals.css             # Global Tailwind CSS styles
-│   ├── layout.tsx              # Root layout for the application
-│   ├── loading.tsx             # Custom loading page
-│   ├── manifest.ts             # Web app manifest generation
-│   ├── not-found.tsx           # Custom 404 page
-│   ├── page.tsx                # Homepage
-│   ├── projects/
-│   │   ├── ProjectsClientPage.tsx # Client component for projects page
-│   │   └── page.tsx            # Server component for projects page
-│   ├── robots.ts               # Robots.txt generation
-│   ├── services/
-│   │   ├── ServicesClientPage.tsx # Client component for services page
-│   │   └── page.tsx            # Server component for services page
-│   └── sitemap.ts              # Sitemap generation
-├── components/
-│   ├── ui/                     # Shadcn UI components
-│   └── (other components)      # Custom components like Header, Footer, Hero, etc.
-├── contexts/
-│   └── language-context.tsx    # Language context provider
-├── data/
-│   ├── mock-data.ts            # Mock data for services, projects, testimonials, stats
-│   └── translations.ts         # Translations for multiple languages
-├── hooks/
-│   ├── use-mobile.tsx          # Custom hook for mobile detection
-│   └── use-toast.ts            # Custom hook for toast notifications
-├── lib/
-│   └── utils.ts                # Utility functions (e.g., cn for Tailwind classes)
-├── public/                     # Static assets (images, favicons)
-├── styles/
-│   └── globals.css             # (Optional) Additional global styles
-├── .env.example                # Example environment variables
-├── next.config.mjs             # Next.js configuration
-├── package.json                # Project dependencies and scripts
-├── postcss.config.mjs          # PostCSS configuration
-├── tailwind.config.js          # Tailwind CSS configuration
-└── tsconfig.json               # TypeScript configuration
-\`\`\`
-
-## Deployment
-
-This project is configured for easy deployment to Vercel.
-
-1. **Create a Vercel Account**: If you don't have one, sign up at [vercel.com](https://vercel.com/).
-2. **Install Vercel CLI (Optional but Recommended)**:
-   \`\`\`bash
-   npm i -g vercel
-   \`\`\`
-3. **Link Your Project**:
-   Navigate to your project directory in the terminal and run:
-   \`\`\`bash
-   vercel link
-   \`\`\`
-   Follow the prompts to link your project to a Vercel scope and project.
-4. **Deploy**:
-   \`\`\`bash
-   vercel deploy
-   \`\`\`
-   This will deploy your project to Vercel. You can also deploy directly from your Git repository (GitHub, GitLab, Bitbucket) by importing your project into Vercel.
-
-For more detailed deployment instructions, refer to the `DEPLOYMENT.md` file.
-
-## Environment Variables
-
-Create a `.env.local` file in the root of your project based on `.env.example`.
-\`\`\`
-# Example environment variables
-# NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-\`\`\`
-
-## Contributing
-
-Feel free to fork the repository and submit pull requests.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
