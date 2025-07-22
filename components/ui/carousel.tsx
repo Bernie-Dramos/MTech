@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
+import type { EmblaOptionsType } from "embla-carousel"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -30,7 +31,7 @@ function useCarousel() {
 }
 
 type CarouselProps = React.ComponentPropsWithoutRef<"div"> & {
-  opts?: React.ComponentProps<typeof useEmblaCarousel>[0]
+  opts?: EmblaOptionsType
   orientation?: "horizontal" | "vertical"
 }
 

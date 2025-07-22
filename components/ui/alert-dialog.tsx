@@ -99,7 +99,7 @@ const AlertDialogAction = React.forwardRef<
           variant: "default",
           size: "default",
         },
-      })().className,
+      })(),
       className,
     )}
     {...props}
@@ -135,7 +135,7 @@ const AlertDialogCancel = React.forwardRef<
           variant: "outline", // Changed default variant to "outline"
           size: "default",
         },
-      })().className,
+      })(),
       "mt-2 sm:mt-0",
       className,
     )}

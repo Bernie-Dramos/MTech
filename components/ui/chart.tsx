@@ -6,6 +6,15 @@ import * as RechartsPrimitive from "recharts"
 import { cn } from "@/lib/utils"
 
 // Workaround for https://github.com/recharts/recharts/issues/3615
+type RechartsTooltipProps = {
+  active?: boolean;
+  payload?: Array<{ value: any; name: any }>;
+  label?: any;
+  formatter?: (value: number | string, name: number | string, props: any) => React.ReactNode;
+  content?: (props: any) => React.ReactNode;
+  className?: string;
+};
+
 const Tooltip = ({
   active,
   payload,
@@ -13,11 +22,9 @@ const Tooltip = ({
   formatter,
   content,
   className,
-}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> & {
-  formatter?: (value: number | string, name: number | string, props: any) => React.ReactNode
-}) => {
+}: RechartsTooltipProps) => {
   if (active && payload && payload.length) {
-    const value = formatter ? formatter(payload[0].value, payload[0].name, payload[0]) : payload[0].value
+    const value = formatter ? formatter(payload[0].value, payload[0].name, payload[0]) : payload[0].value;
 
     return (
       <div
@@ -35,10 +42,9 @@ const Tooltip = ({
           </div>
         )}
       </div>
-    )
+    );
   }
-
-  return null
+  return null;
 }
 
 const ChartContext = React.createContext<{
@@ -65,9 +71,8 @@ const ChartContainer = ({ config, children, className, ...props }: ChartContaine
         content: (props: any) => (
           <Tooltip
             {...props}
-            formatter={(child.props as any).formatter || config[props.payload?.[0]?.name]?.formatter}
+            formatter={(child.props as any).formatter}
             content={child.props.content}
-            className={child.props.className}
           />
         ),
       } as React.ComponentProps<typeof RechartsPrimitive.Tooltip>)
@@ -77,8 +82,8 @@ const ChartContainer = ({ config, children, className, ...props }: ChartContaine
 
   return (
     <ChartContext.Provider value={{ config }}>
-      <RechartsPrimitive.ResponsiveContainer className={cn("flex h-[300px] w-full", className)} {...props}>
-        {newChildren}
+      <RechartsPrimitive.ResponsiveContainer {...props}>
+        {Array.isArray(newChildren) ? <>{newChildren}</> : newChildren}
       </RechartsPrimitive.ResponsiveContainer>
     </ChartContext.Provider>
   )
@@ -89,19 +94,26 @@ const ChartTooltip = ({
   cursor = false,
   content,
   formatter,
-  className,
   ...props
-}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> & {
+}: Omit<React.ComponentProps<typeof RechartsPrimitive.Tooltip>, 'className'> & {
   formatter?: (value: number | string, name: number | string, props: any) => React.ReactNode
 }) => {
   const { config } = useChart()
 
+  // Only pass content if it is a valid React element, otherwise use our Tooltip
+  // Always pass a function as content, per Recharts v3+ signature
+  const tooltipContentFn = (props: any) => {
+    if (typeof content === 'function') {
+      return content(props);
+    }
+    return <Tooltip {...props} formatter={formatter} content={content} />;
+  };
+
   return (
     <RechartsPrimitive.Tooltip
       cursor={cursor}
-      content={content ? content : <Tooltip formatter={formatter} content={content} className={className} />}
+      content={tooltipContentFn}
       formatter={formatter}
-      className={className}
       {...props}
     />
   )
@@ -132,7 +144,13 @@ const ChartLegend = ({
                     }
                     return (
                       <div key={key} className="flex items-center gap-1.5">
-                        {config[key]?.icon && <config.icon className={cn("h-3 w-3", config[key]?.color)} />}
+                        {(() => {
+                          const Icon = config[key]?.icon;
+                          if (typeof Icon === "function") {
+                            return <Icon />;
+                          }
+                          return null;
+                        })()}
                         <span className="text-muted-foreground">{config[key]?.label}</span>
                       </div>
                     )
@@ -146,23 +164,9 @@ const ChartLegend = ({
 }
 ChartLegend.displayName = "ChartLegend"
 
-const ChartCrosshair = React.forwardRef<SVGSVGElement, React.ComponentProps<typeof RechartsPrimitive.Crosshair>>(
-  ({ className, ...props }, ref) => (
-    <RechartsPrimitive.Crosshair ref={ref} className={cn("stroke-border stroke-dasharray-2", className)} {...props} />
-  ),
-)
-ChartCrosshair.displayName = "ChartCrosshair"
 
-const ChartTooltipContent = React.forwardRef<HTMLDivElement, React.ComponentProps<typeof Tooltip>>(
-  ({ className, ...props }, ref) => (
-    <Tooltip
-      ref={ref}
-      className={cn("rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md", className)}
-      {...props}
-    />
-  ),
-)
-ChartTooltipContent.displayName = "ChartTooltipContent"
+
+
 
 function useChart() {
   const context = React.useContext(ChartContext)
@@ -172,4 +176,4 @@ function useChart() {
   return context
 }
 
-export { ChartContainer, ChartTooltip, ChartLegend, ChartCrosshair, ChartTooltipContent, useChart }
+export { ChartContainer, ChartTooltip, ChartLegend, useChart }

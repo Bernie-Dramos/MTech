@@ -18,12 +18,7 @@ type FormFieldContext<
 
 const FormFieldContext = React.createContext<FormFieldContext>({} as FormFieldContext)
 
-const FormField = <
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({
-  ...props
-}: Controller<TFieldValues, TName>) => {
+const FormField = (props: React.ComponentProps<typeof Controller>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
@@ -33,7 +28,7 @@ const FormField = <
 
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
-  const { formState, getFieldState, formDescriptionId, formMessageId } = useFormContext()
+  const { formState, getFieldState } = useFormContext()
 
   const fieldState = getFieldState(fieldContext.name, formState)
 
